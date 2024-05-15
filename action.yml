@@ -1,0 +1,23 @@
+name: 'AWS Authentication'
+description: 'Assumes a role in AWS'
+input:
+  roleToAssume:
+    description: 'The role to assume'
+    required: true
+  region:
+    description: 'The region to use'
+    required: false
+    default: 'us-east-1'
+  sessionName:
+    description: 'The session name'
+    required: false
+    default: 'GitHubActions'
+runs: 
+  using: 'composite'
+  steps:
+    - name: Set up AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: ${{ inputs.region }}
+        role-to-assume: ${{ inputs.roleToAssume }}
+        role-session-name: ${{ inputs.sessionName }}
