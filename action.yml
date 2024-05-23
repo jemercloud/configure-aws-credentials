@@ -1,6 +1,6 @@
 name: 'AWS Authentication'
 description: 'Assumes a role in AWS'
-input:
+inputs:
   role-to-assume:
     description: 'The role to assume'
     required: true
